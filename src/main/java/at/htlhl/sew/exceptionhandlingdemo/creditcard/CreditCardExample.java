@@ -8,6 +8,13 @@ public class CreditCardExample {
         CreditCard creditCard = new CreditCard(1000, 500);
         Scanner scanner = new Scanner(System.in);
 
+        Thread.currentThread().setUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+            @Override
+            public void uncaughtException(Thread t, Throwable e) {
+                System.out.println("Error: Invalid input. Please enter a number.");
+            }
+        });
+
         while (creditCard.getBalance() > 0) {
             System.out.println("Enter the amount to charge:");
             double amount = scanner.nextDouble();
@@ -22,4 +29,5 @@ public class CreditCardExample {
             }
         }
     }
+
 }
